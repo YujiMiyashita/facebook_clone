@@ -1,19 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+<h1>ブログ詳細</h1>
 
-<p>
-  <strong>Content:</strong>
-  <%= @topic.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @topic.user %>
-</p>
+<p><%= @topic.title %></p>
+<p><%= @topic.content %></p>
+<p><%= @topic.user.name %></p>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
+
+<div class="comments_area" id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments } %>
+</div>
+
+<div class="new_comment" id="new_comment">
+  <%= render partial: 'comments/new', locals: { comment: @comment } %>
+</div>
