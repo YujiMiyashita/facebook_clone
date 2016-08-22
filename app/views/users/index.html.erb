@@ -3,6 +3,10 @@
 <ul>
   <% @users.each do |user| %>
     <li><%= link_to user.name, user_path(user) %></li>
-    <%= render 'follow_form', user: user %>
+    <% if user != current_user %>
+      <%= render 'follow_form', user: user %>
+    <% else %>
+      <%= link_to 'ユーザー編集', edit_user_registration_path %>
+    <% end %>
   <% end %>
 </ul>
