@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  template: template0
+  pool: 5
+
+development:
+  <<: *default
+  database: facebook_clone_development
+
+test:
+  <<: *default
+  database: facebook_clone_test
+
+production:
+  <<: *default
+  database: facebook_clone_production
+  username: facebook_clone
+  password: <%= ENV['FACEBOOK_CLONE_DATABASE_PASSWORD'] %>
