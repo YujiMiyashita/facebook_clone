@@ -28,7 +28,7 @@ class TopicsController < ApplicationController
 
   def update
     if @topic.update(topic_params)
-      redirect_to topics_path, notice: 'トピックが作成されました！'
+      redirect_to topics_path, notice: 'トピックが更新されました！'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic.destroy
-    redirect_to topics_path, notice: 'トピックが作成されました！'
+    redirect_to topics_path, notice: 'トピックが削除されました！'
 
   end
 

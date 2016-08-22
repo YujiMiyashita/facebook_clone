@@ -1,2 +1,29 @@
-<h1>Contacts#confirm</h1>
-<p>Find me in app/views/contacts/confirm.html.erb</p>
+<h1>確認画面</h1>
+
+<%= form_for(@contact) do |f| %>
+  <div class="field">
+    <%= @contact.name %>
+    <%= f.hidden_field :name %>
+  </div>
+  <div class="field">
+    <%= @contact.email %>
+    <%= f.hidden_field :email %>
+  </div>
+  <div class="field">
+    <%= @contact.content %>
+    <%= f.hidden_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= form_for(@contact, url: new_contact_path, method: 'get') do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :content %>
+  <div class="back" id="back">
+    <%= f.submit '戻る', name: 'back' %>
+  </div>
+<% end %>

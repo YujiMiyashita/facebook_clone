@@ -57,6 +57,8 @@ group :development, :test do
 
   gem 'dotenv'
 
+  gem 'dotenv-rails'
+
   gem 'awesome_print'
 
   gem 'better_errors'
