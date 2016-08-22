@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @topics = Topic.all
+    @topics = friend_topics
   end
 
   def show
@@ -43,6 +43,17 @@ class TopicsController < ApplicationController
   private
     def set_topic
       @topic = Topic.find(params[:id])
+    end
+
+    def friend_topics
+      topics = Topic.all
+      friend = current_user.friend
+      @friend_topics = []
+      topics.each do |topic|
+        if friend.ids.try(:include?, (topic.user_id)) || topic.user_id == current_user.id
+          @friend_topics << topic
+        end
+      end
     end
 
     def topic_params

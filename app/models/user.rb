@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id)
   end
 
+#相互フォロー
   def friend
     followers && followed_users
   end
