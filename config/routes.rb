@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] #ユーザー一覧・詳細画面
 
+  resources :relationships, only: [:create, :destroy]
+
   resources :topics do #トピック
     resources :comments #コメント
   end

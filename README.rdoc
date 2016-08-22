@@ -1,28 +1,28 @@
-== README
+- HTML,CSS,Bootstrapを使用して、現実のfacebookアプリに似せたデザインにすること
+- コメント機能（作成、編集、更新、削除）があること
+- コメント機能が、ajaxで実装されていること
+- topicとコメントは結びついていること
+- 友達機能があること(フォロー、フォロワー)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- ログイン機能には、メール認証機能があること
+- userに、プロフィール画像が登録できるようにすること
+- メッセージ機能があること
+- フォローしていて、相手にフォローされていた場合のみメッセージを送信できること
+- フォローしていて、相手にフォローされていた場合のみ相手のtopicを閲覧できること
+- facebookとtwitterでログインできるようにすること
+- gitに上げるべきではないIDやパスワードなどは環境変数化すること
+- Githubで管理していること、そしてソースコードを送信したリポジトリを提出すること
+- エラーメッセージとフラッシュメッセージが適切に表示されること
+- 例外処理を行うこと
+- 適切に日本語化すること
+- アプリに必要なシードデータを用意があること（Userやtopicやcomment)
+- awsで公開すること(unicorn nginxを使用すること)
+- capistranoを使用して、自動デプロイを行うこと
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+完了
+- topic機能（一覧、作成、詳細、編集、更新、削除）があること
+- topicとuserが結びついていること
+- topicに投稿者が表示されること
+- ログイン機能があること
+- gitで管理していること
