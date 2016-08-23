@@ -52,8 +52,10 @@ class TopicsController < ApplicationController
       friend = current_user.friend
       @friend_topics = []
       topics.each do |topic|
-        if friend.ids.try(:include?, (topic.user_id)) || topic.user_id == current_user.id
-          @friend_topics << topic
+        if friend.present?
+          @friend_topics << topic if friend.ids.try(:include?, (topic.user_id)) || topic.user_id == current_user.id
+        else
+          @friend_topics << topic if topic.user_id == current_user.id
         end
       end
     end

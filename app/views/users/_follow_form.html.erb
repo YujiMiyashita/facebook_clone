@@ -1,13 +1,8 @@
 <!-- フォローボタン -->
 <div id="follow_form_<%= user.id %>">
-  <% unless current_user.following?(user) %>
-    <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
-      <%= f.hidden_field :followed_id %>
-      <%= f.submit 'フォローする', class: 'btn btn-large' %>
-    <% end %>
+  <% if current_user.following?(user) %>
+    <%= render partial: 'unfollow', locals: { user: user } %>
   <% else %>
-    <%= form_for(current_user.relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
-      <%= f.submit 'フォロー解除', class: 'btn btn-large' %>
-    <% end %>
+    <%= render partial: 'follow', locals: { user: user } %>
   <% end %>
 </div>

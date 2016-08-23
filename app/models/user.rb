@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  #mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
+  def follow(other_user)
+    relationships.create(followed_id: other_user.id)
   end
 
-  def unfollow!(other_user)
+  def unfollow(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def friend
-    followers && followed_users
+    followers & followed_users
   end
 
   def self.find_for_facebook_oauth(auth, sign_in_resource=nil)
@@ -51,12 +51,11 @@ class User < ActiveRecord::Base
       name: auth.info.name,
       nick_name: auth.info.nickname,
       email: User.create_email,
-      image_url: auth.extra.profile_image_url,
+      image_url: auth.info.image,
       provider: auth.provider,
       uid: auth.uid,
       password: Devise.friendly_token[0,20]
     ) unless user
-
     user.skip_confirmation!
     user.save
     user
