@@ -1,2 +1,6 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<h1>コメント編集</h1>
+<%= form_for(@comment, url: topic_comment_path(@comment.topic, @comment)) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>

@@ -1,9 +1,9 @@
 <h1>コメント一覧</h1>
 
-
 <% comments.each do |comment| %>
   <% if comment.id.present? %>
     <%= simple_format(comment.content) %>
     <%= link_to '編集', edit_topic_comment_path(comment.topic_id, comment.id) %>
+    <%= link_to '削除', topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true %>
   <% end %>
 <% end %>
