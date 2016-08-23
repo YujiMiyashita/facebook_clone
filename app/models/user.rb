@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, #:confirmable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   #mount_uploader :avatar, AvatarUploader
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
       password: Devise.friendly_token[0,20]
     ) unless user
 
-    #user.skip_confirmation!
+    user.skip_confirmation!
     user.save
     user
   end
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
       password: Devise.friendly_token[0,20]
     ) unless user
 
-    #user.skip_confirmation!
+    user.skip_confirmation!
     user.save
     user
   end
