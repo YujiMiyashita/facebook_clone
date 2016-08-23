@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'top#index' #トップ画面
+  root 'top#index' #トップ画面
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

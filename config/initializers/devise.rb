@@ -11,6 +11,7 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
+  config.secret_key = '65414aca3a4bb4d663cbd47178a83c89d817a906313369a6a459b0f5e767de4b3dc9d01fddf460068ad30550019ede8953b20510582f711435381403dd3d844d'
 
   if Rails.env.development?
     config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"]
