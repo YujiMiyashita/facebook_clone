@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root to: 'top#index' #トップ画面
 
   devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }  #ログイン・サインアップ
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   resources :users, only: [:index, :show] #ユーザー一覧・詳細画面
 

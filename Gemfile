@@ -33,6 +33,8 @@ gem 'font-awesome-rails'
 
 gem 'autoprefixer-rails'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 gem 'devise'
 
 gem 'omniauth'
@@ -43,6 +45,9 @@ gem 'omniauth-facebook'
 
 #画像アップローダー
 gem 'carrierwave'
+
+gem 'rmagick'
+
 #heroku logs -t
 gem 'rails_12factor', group: :production
 
@@ -53,8 +58,6 @@ gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
   gem 'dotenv'
 
   gem 'dotenv-rails'
