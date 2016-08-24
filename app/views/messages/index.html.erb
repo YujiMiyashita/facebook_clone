@@ -1,0 +1,11 @@
+<h1>メッセンジャー</h1>
+<% @messages.each do |message| %>
+  <P><%= message.user.name %></P>
+  <P><%= profile_img(message.user) %></P>
+  <P><%= message.content %></P>
+<% end %>
+
+<%= form_for(@message, url: conversation_messages_path) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit 'メッセージを送る' %>
+<% end %>

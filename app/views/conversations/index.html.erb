@@ -1,0 +1,10 @@
+<% @friend_users.each do |friend_user| %>
+  <% if friend_user.present? %>
+    <%= form_for(@conversation, url: conversations_path) do |f| %>
+      <%= friend_user.name %>
+      <%= profile_img(friend_user) %>
+      <%= f.hidden_field :recipient_id, value: friend_user.id %>
+      <%= f.submit 'メッセージを始める' %>
+    <% end %>
+  <% end %>
+<% end %>
