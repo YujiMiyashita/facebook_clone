@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :cannot_topic, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -49,14 +50,22 @@ class TopicsController < ApplicationController
 
     def friend_topics
       topics = Topic.all
-      friend = current_user.friend
+      friends = current_user.friend
       @friend_topics = []
       topics.each do |topic|
+      friends.each do |friend|
         if friend.present?
-          @friend_topics << topic if friend.ids.try(:include?, (topic.user_id)) || topic.user_id == current_user.id
+          @friend_topics << topic if friend.id == topic.user_id || topic.user_id == current_user.id
         else
           @friend_topics << topic if topic.user_id == current_user.id
         end
+      end
+      end
+    end
+
+    def cannot_topic
+      if @topic.user != current_user
+        redirect_to topics_path, notice: '投稿者が自分ではないため、実行できませんでした。'
       end
     end
 

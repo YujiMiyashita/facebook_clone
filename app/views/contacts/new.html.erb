@@ -1,6 +1,18 @@
 <h1>お問い合わせ新規</h1>
 
 <%= form_for(@contact, url: confirm_contacts_path, method: 'get') do |f| %>
+
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %> 件のエラーがあります。</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -11,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
   </div>
   <div class="actions">
     <%= f.submit %>

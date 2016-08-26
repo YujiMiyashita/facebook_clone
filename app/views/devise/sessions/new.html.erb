@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -19,18 +19,18 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
 
-<div class="">
+<div class="twitter">
   <a href="/users/auth/twitter" class="btn btn-social btn-twitter">
   <i class="fa fa-twitter"></i>Twitter認証</a>
 </div>
 
-<div class="">
+<div class="facebook">
   <a href="/users/auth/facebook" class="btn btn-social btn-facebook">
   <i class="fa fa-facebook"></i>Facebook認証</a></br>
 </div>

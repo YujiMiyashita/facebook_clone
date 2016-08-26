@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @friend_users = current_user.friend
     @conversation = Conversation.new

@@ -1,8 +1,10 @@
 <header>
+  <%= link_to 'トップ', topics_path, class: 'btn-facebook btn-social-icon' %>
+
   <ul>
     <% if user_signed_in? %>
       <li><%= link_to 'トピック', topics_path %></li>
-      <li><%= link_to 'メッセージ', root_path %></li>
+      <li><%= link_to 'メッセンジャー', conversations_path %></li>
       <li><%= link_to 'ユーザ一覧', users_path %></li>
       <li>ようこそ！ <%= current_user.name %>さん！<%= profile_img(current_user) %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
