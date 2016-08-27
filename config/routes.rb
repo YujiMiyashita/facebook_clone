@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+
   resources :users, only: [:index, :show] #ユーザー一覧・詳細画面
 
   resources :conversations do
