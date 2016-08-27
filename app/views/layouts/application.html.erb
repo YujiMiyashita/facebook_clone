@@ -14,11 +14,9 @@
 <body>
 
 <%= render 'layouts/header' %>
-<div class="back_img">
-  <p id="notice"><%= notice %></p>
-  <%= yield %>
-  </div>
-  <%= render 'layouts/footer' %>
+<p id="notice"><%= notice %></p>
+<%= yield %>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>
