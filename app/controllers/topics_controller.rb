@@ -6,7 +6,6 @@ class TopicsController < ApplicationController
   def index
     @topics = friend_topics
     @topic = Topic.new
-    binding.pry
   end
 
   def show
