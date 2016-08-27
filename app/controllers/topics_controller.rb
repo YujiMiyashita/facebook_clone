@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
   def index
     @topics = friend_topics
     @topic = Topic.new
+    binding.pry
   end
 
   def show
@@ -48,10 +49,11 @@ class TopicsController < ApplicationController
       topics = Topic.all
       friends = current_user.friend
       @friend_topics = []
+
       topics.each do |topic|
-      friends.each do |friend|
-        if friend.present?
-          @friend_topics << topic if friend.id == topic.user_id || topic.user_id == current_user.id
+      friends.each do |fri|
+        if fri.present?
+          @friend_topics << topic if fri.id == topic.user_id || topic.user_id == current_user.id
         else
           @friend_topics << topic if topic.user_id == current_user.id
         end

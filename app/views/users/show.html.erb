@@ -1,21 +1,32 @@
 <h1><%= @user.name %>さんの情報</h1>
+<div class="col-md-6 col-md-offset-3">
+<div class="row">
+  <h2>フォロー</h2>
+  <% @user.followers.each do |follower| %>
+    <div class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1">
+      <%= link_to follower.name, user_path(follower) %>
+      <%= profile_img(follower) %>
+    </div><br/>
+  <% end %>
+</div>
 
-<h2>プロフフィール</h2>
+<div class="row">
+  <h2>フォロワー</h2>
+  <% @user.followed_users.each do |followed| %>
+    <div class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1">
+      <%= link_to followed.name, user_path(followed) %>
+      <%= profile_img(followed) %>
+    </div><br/>
+  <% end %>
+</div>
 
-<h2>フォロー</h2>
-<% @user.followers.each do |follower| %>
-  <%= follower.name %>
-  <%= profile_img(follower) %>
-<% end %>
-
-<h2>フォロワー</h2>
-<% @user.followed_users.each do |followed| %>
-  <%= followed.name %>
-  <%= profile_img(followed) %>
-<% end %>
-
-<h2>相互フォローの友達</h2>
-<% @user.friend.each do |friends| %>
-  <%= friends.name %>
-  <%= profile_img(friends) %>
-<% end %>
+<div class="row">
+  <h2>相互フォローの友達</h2>
+  <% @user.friend.each do |friends| %>
+    <div class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1">
+      <%= link_to friends.name, user_path(friends) %>
+      <%= profile_img(friends) %>
+    </div><br/>
+  <% end %>
+</div>
+</div>
