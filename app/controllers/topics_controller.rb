@@ -21,8 +21,8 @@ class TopicsController < ApplicationController
     @topic.user_id = current_user.id
     if @topic.save
       redirect_to topics_path, notice: 'トピックが作成されました！'
-    else
-      render :new
+    elsif @topic.invalid?
+      redirect_to topics_path, notice: 'トピックが作成されませんでした'
     end
   end
 
@@ -30,14 +30,13 @@ class TopicsController < ApplicationController
     if @topic.update(topic_params)
       redirect_to topics_path, notice: 'トピックが更新されました！'
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     @topic.destroy
     redirect_to topics_path, notice: 'トピックが削除されました！'
-
   end
 
   private

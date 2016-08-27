@@ -1,6 +1,8 @@
-<h1>コメント新規</h1>
 <%= form_for(comment, url: topic_comments_path(comment.topic), remote: true) do |f| %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit %>
+  <div class="row">
+    <%= f.text_area :content, class: "form-control", placeholder: 'コメントを入力' %>
+  </div>
+  <div class="row">
+    <%= f.submit 'コメントを送信', class: 'btn btn-success' %>
+  </div>
 <% end %>

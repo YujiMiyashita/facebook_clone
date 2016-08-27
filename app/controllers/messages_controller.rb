@@ -2,8 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @messages = Message.where(conversation_id: params[:conversation_id])
-    @message = current_user.messages.build
+    @messages = Message.where(conversation_id: params[:conversation_id]).order(created_at: :desc).reverse_order
+    @message = current_user.messages.build(conversation_id: params[:conversation_id])
   end
 
   def create

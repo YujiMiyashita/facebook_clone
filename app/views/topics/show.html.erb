@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+<div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+<h2><%= @topic.user.name %>さんの投稿</h2>
 
-<h1>ブログ詳細</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @topic.title %></div>
+  <div class="panel-body"><%= simple_format(@topic.content) %></div>
+</div>
 
-<p><%= @topic.title %></p>
-<p><%= @topic.content %></p>
-<p><%= @topic.user.name %></p>
-
-<%= link_to '編集', edit_topic_path(@topic) %> |
-<%= link_to '戻る', topics_path %>
+<%= link_to 'トピックを編集', edit_topic_path(@topic), class: 'btn btn-info' %>
 
 <div class="comments_area" id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments } %>
@@ -15,4 +15,9 @@
 
 <div class="new_comment" id="new_comment">
   <%= render partial: 'comments/new', locals: { comment: @comment } %>
+</div>
+
+<%= link_to '戻る', topics_path %>
+
+</div>
 </div>
