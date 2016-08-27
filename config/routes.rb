@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'topics#index' #トップ画面
 
-  get '/index' => 'top#index'
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',

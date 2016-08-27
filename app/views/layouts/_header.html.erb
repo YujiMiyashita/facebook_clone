@@ -1,18 +1,65 @@
 <header>
-  <div class="header">
-    <ul>
-      <% if user_signed_in? %>
-        <li>Facebook_clone</li>
-        <li><%= link_to 'トピック', topics_path %></li>
-        <li><%= link_to 'メッセンジャー', conversations_path %></li>
-        <li><%= link_to 'ユーザ一覧', users_path %></li>
-        <li>ようこそ！ <%= current_user.name %>さん！<%= profile_img(current_user) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
-      <% end %>
-        <li><%= link_to 'お問い合わせ画面', new_contact_path %></li>
-        <li><%= link_to '' %></li>
-    </ul>
+  <div id="menuButton">
+  <div id="menuButtonInner">
+  <span class="slideButton"><i class="blogicon-list lg"></i>MENU<br></span>
+  </div>
+  </div>
+  <div id="slideMenu">
+  <ul class="slideMenuInner">
+      <li><%= link_to ' Facebook', topics_path %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to 'メッセンジャー', conversations_path %></li>
+      <li><%= link_to 'ユーザ一覧', users_path %></li>
+      <li><%= link_to 'アカウント変更', edit_user_registration_path %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path %>
+    <% end %>
+    <div class="closeArea"></div>
+  </ul>
+  </div>
+  <div style="clear:both;"></div>
+  <div id="layer"></div>
   </div>
 </header>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>
+  $(function(){
+      var menu = $('#slideMenu'),
+          closeArea = $('.closeArea'),
+          slideButton = $('.slideButton'),
+          content = $('body'),
+          layer = $('#layer'),
+          menuWidth = menu.outerWidth();
+      slideButton.click(function(){
+          slideOpen();
+      });
+      layer.click(function(){
+          slideClose();
+      });
+      closeArea.click(function(){
+          slideClose();
+      });
+      function slideOpen(){
+          menu.animate({'right' : 0 }, 300);
+          layer.show();
+          content.addClass('open');
+      }
+      function slideClose(){
+          menu.animate({'right' : -menuWidth }, 300);
+          layer.hide();
+          content.removeClass('open');
+      };
+      $(window).resize(function(){
+          var win = $(window).width();
+          var p = 960;//１
+          if(win > p){
+              menu.animate({'right' : 0 }, 300);
+          }else{
+              menu.animate({'right' : -menuWidth }, 300);
+              layer.hide();
+          }
+      });
+  });
+  </script>
