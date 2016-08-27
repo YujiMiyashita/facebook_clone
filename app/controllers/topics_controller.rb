@@ -5,15 +5,12 @@ class TopicsController < ApplicationController
 
   def index
     @topics = friend_topics
+    @topic = Topic.new
   end
 
   def show
     @comments = @topic.comments
     @comment = @topic.comments.build
-  end
-
-  def new
-    @topic = Topic.new
   end
 
   def edit

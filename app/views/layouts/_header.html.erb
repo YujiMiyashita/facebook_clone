@@ -1,17 +1,18 @@
 <header>
-  <%= link_to 'トップ', topics_path, class: 'btn-facebook btn-social-icon' %>
-
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to 'トピック', topics_path %></li>
-      <li><%= link_to 'メッセンジャー', conversations_path %></li>
-      <li><%= link_to 'ユーザ一覧', users_path %></li>
-      <li>ようこそ！ <%= current_user.name %>さん！<%= profile_img(current_user) %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path %></li>
-    <% end %>
-      <li><%= link_to 'お問い合わせ画面', new_contact_path %></li>
-      <li><%= link_to '' %></li>
-  </ul>
+  <div class="header">
+    <ul>
+      <% if user_signed_in? %>
+        <li>Facebook_clone</li>
+        <li><%= link_to 'トピック', topics_path %></li>
+        <li><%= link_to 'メッセンジャー', conversations_path %></li>
+        <li><%= link_to 'ユーザ一覧', users_path %></li>
+        <li>ようこそ！ <%= current_user.name %>さん！<%= profile_img(current_user) %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <% end %>
+        <li><%= link_to 'お問い合わせ画面', new_contact_path %></li>
+        <li><%= link_to '' %></li>
+    </ul>
+  </div>
 </header>

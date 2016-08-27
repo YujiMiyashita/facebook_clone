@@ -199,29 +199,31 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+    
+  activerecord:
+    models:
+      user: ユーザー
+      topic: トピック
+      contact: お問い合わせ
+      comment: コメント
+      message: メッセージ
+      conversation: 会話
 
-  models:
-    user: ユーザー
-    topic: トピック
-    contact: お問い合わせ
-    comment: コメント
-    message: メッセージ
-    conversation: 会話
-
-  attributes:
-    user:
-      name: 名前
-      email: メールアドレス
-      password: パスワード
-      password_confirmation: パスワード確認
-    topic:
-      title: タイトル
-      content: 内容
-    contact:
-      name: 名前
-      email: メールアドレス
-      content: 内容
-    comment:
-      content: 内容
-    message:
-      content: 内容
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+      topic:
+        title: タイトル
+        content: 内容
+      contact:
+        name: 名前
+        email: メールアドレス
+        content: 内容
+      comment:
+        content: 内容
+      message:
+        content: 内容

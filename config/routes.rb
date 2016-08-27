@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :topics do #トピック
+  resources :topics, except: [:new] do #トピック
     resources :comments #コメント
   end
 
