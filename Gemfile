@@ -63,6 +63,8 @@ gem 'pusher'
 
 gem 'kaminari'
 
+gem 'binding_of_caller'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,8 +73,6 @@ group :development, :test do
   gem 'awesome_print'
 
   gem 'better_errors'
-
-  gem 'binding_of_caller'
 
   gem 'database_rewinder'
 
