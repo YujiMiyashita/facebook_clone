@@ -22,7 +22,8 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, notice: 'トピックが作成されました！'
     elsif @topic.invalid?
-      redirect_to topics_path, notice: 'トピックが作成されませんでした'
+      @topics = friend_topics
+      render :index, notice: 'トピックが作成されませんでした'
     end
   end
 
@@ -47,17 +48,22 @@ class TopicsController < ApplicationController
     def friend_topics
       topics = Topic.all
       friends = current_user.friend
-      @friend_topics = []
+      timeline = []
 
-      topics.each do |topic|
-      friends.each do |fri|
-        if fri.present?
-          @friend_topics << topic if fri.id == topic.user_id || topic.user_id == current_user.id
-        else
-          @friend_topics << topic if topic.user_id == current_user.id
+      if friends.blank?
+        topics.each do |topic|
+          timeline << topic if topic.user_id == current_user.id
+        end
+
+      elsif friends.present?
+        topics.each do |topic|
+        friends.each do |fri|
+          timeline << topic if fri.id == topic.user_id || topic.user_id == current_user.id
+        end
         end
       end
-      end
+
+      return timeline
     end
 
     def cannot_topic

@@ -10,13 +10,16 @@
   <%= csrf_meta_tags %>
 </head>
 
-
+<%= render 'layouts/header' %>
 <body>
 
-<%= render 'layouts/header' %>
-<p id="notice"><%= notice %></p>
-<%= yield %>
-<%= render 'layouts/footer' %>
 
+<p id="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+<br/><br/><br/><br/><br/><br/><br/>
+<%= render 'layouts/footer' %>
 </body>
+
 </html>
