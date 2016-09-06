@@ -2,6 +2,6 @@
   Topic.create(
     title: "title#{n}",
     content: "content#{n}",
-    user_id: rand(10) + 1
+    user_id: rand(10..18)
   )
 end
