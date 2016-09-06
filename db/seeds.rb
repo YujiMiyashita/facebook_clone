@@ -1,7 +1,7 @@
 20.times do |n|
   Topic.create(
-    title: "title#{n}",
     content: "content#{n}",
-    user_id: rand(10..18)
+    user_id: rand(10..18),
+    topic_id: rand(5..13)
   )
 end
