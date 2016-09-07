@@ -74,6 +74,8 @@ group :development, :test do
 
   gem 'awesome_print'
 
+  gem 'letter_opener_web'
+
   gem 'better_errors'
 
   gem 'database_rewinder'
