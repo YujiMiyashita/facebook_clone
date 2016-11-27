@@ -7,10 +7,9 @@ class User < ActiveRecord::Base
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :messages, dependent: :destroy
-
   has_many :relationships, foreign_key: 'follower_id', dependent: :destroy
   has_many :reverse_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
-  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followed_users, through: :relationships, source: :followed #sourceは多：多の時に探し出すモデル(テーブル)を指定する
   has_many :followers, through: :reverse_relationships, source: :follower
 
   def follow(other_user)
@@ -76,7 +75,4 @@ class User < ActiveRecord::Base
   def self.create_email
     SecureRandom.uuid + '@example.com'
   end
-
-
-
 end
