@@ -17,8 +17,6 @@ Rails.application.routes.draw do
 
   resources :conversations do
     resources :messages
-    get 'dvasvsa'
-    post 'bfdasbad'
   end
 
   resources :relationships, only: [:create, :destroy]
