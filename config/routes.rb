@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :conversations do
     resources :messages
-    get 'hoge'
   end
 
   resources :relationships, only: [:create, :destroy]
